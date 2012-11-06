@@ -9,6 +9,8 @@
 #include <iostream>
 #include <string>
 
+std::string test = "测试1";
+
 template<typename T>
 bool equal(T & e1, T & e2) {
 	return e1 == e2;

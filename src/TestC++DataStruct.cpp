@@ -12,7 +12,5 @@ using namespace std;
 
 int main() {
 	TestADTList();
-	cout << "测试" << endl;
-	cout << "测试2" << endl;
 	return 0;
 }

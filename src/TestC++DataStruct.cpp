@@ -13,5 +13,6 @@ using namespace std;
 int main() {
 	TestADTList();
 	cout << "Oh test!" <<endl;
+	cout << "Oh test2!" <<endl;
 	return 0;
 }

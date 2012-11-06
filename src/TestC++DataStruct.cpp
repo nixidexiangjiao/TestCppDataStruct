@@ -12,8 +12,5 @@ using namespace std;
 
 int main() {
 	TestADTList();
-	cout << "Oh test!" <<endl;
-	cout << "Oh test2!" <<endl;
-	cout << "Oh test3!" <<endl;
 	return 0;
 }

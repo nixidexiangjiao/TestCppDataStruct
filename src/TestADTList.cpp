@@ -24,7 +24,7 @@ void unionList(adttest::ADTList<T> & la, const adttest::ADTList<T> & lb) {
 	for (int i = 0; i <= lb_len; ++i) {
 		lb.GetElem(i, temp);
 		if (!la.LocateElem(temp, f)) {
-			la.ListInsert(++la_len, temp);
+			la.ListInsert(la_len++, temp);
 		}
 	}
 }
@@ -39,22 +39,22 @@ void MergeList(const adttest::ADTList<T> & la, const adttest::ADTList<T> & lb,
 	T ai, bi;
 	while ((i < la_len) && (j < lb_len)) {
 		la.GetElem(i, ai);
-		lb.GetElem(i, bi);
+		lb.GetElem(j, bi);
 		if (ai <= bi) {
-			lc.ListInsert(++k, ai);
+			lc.ListInsert(k++, ai);
 			i++;
 		} else {
-			lc.ListInsert(++k, bi);
+			lc.ListInsert(k++, bi);
 			j++;
 		}
 	}
 	while (i < la_len) {
 		la.GetElem(i++, ai);
-		lc.ListInsert(++k, ai);
+		lc.ListInsert(k++, ai);
 	}
 	while (j < lb_len) {
-		la.GetElem(j++, bi);
-		lc.ListInsert(++k, bi);
+		lb.GetElem(j++, bi);
+		lc.ListInsert(k++, bi);
 	}
 }
 
@@ -101,4 +101,12 @@ void TestADTList() {
 	int t;
 	list1.GetElem(1, t);
 	std::cout << t << std::endl;
+
+//	unionList(list1, list2);
+//	list1.ListTraverse(showItem);
+//	std::cout << t << std::endl;
+
+	MergeList(list1, list2, list3);
+	list3.ListTraverse(showItem);
+	std::cout << std::endl;
 }

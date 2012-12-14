@@ -9,5 +9,6 @@
 #define TEST_H_
 
 void TestADTList();
+void MazeTest();
 
 #endif /* TEST_H_ */

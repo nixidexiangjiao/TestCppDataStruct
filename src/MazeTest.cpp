@@ -10,6 +10,7 @@
 #include <list>
 #include <cstdlib>
 #include <ctime>
+#include <iterator>
 
 class PosType {
 private:
@@ -17,6 +18,10 @@ private:
 	int y;
 	int type; //0-通道 1-墙
 public:
+	PosType(int x, int y, int type = 1) :
+			x(x), y(y), type(type) {
+
+	}
 	void setX(int x) {
 		this->x = x;
 	}
@@ -38,6 +43,10 @@ public:
 
 	void setType(int type) {
 		this->type = type;
+	}
+	friend std::ostream & operator<<(std::ostream & os, const PosType & pos) {
+		os << "x:" << pos.getX() << " y:" << pos.getY() << " type:" << pos.getType() << std::endl;
+		return os;
 	}
 };
 
@@ -76,16 +85,32 @@ class Maze {
 private:
 	std::list<PosType> poss;
 public:
-	Maze(const PosType& start, const PosType& end);
+	Maze(int width, int height);
 	virtual ~Maze() {
 	}
+	void show() const;
 };
 
-Maze::Maze(const PosType& start, const PosType& end){
+Maze::Maze(int width, int height) {
 	std::srand(std::time(0));
+	for (int i = 0; i < width; ++i) {
+		for (int j = 0; j < height; ++j) {
+			PosType p(i, j);
+			if (i != 0 && i != width - 1 && j != 0 && j != height - 1) {
+				p.setType(std::rand() % 2);
+			}
+			poss.push_back(p);
+		}
+	}
+}
+
+void Maze::show() const {
+	std::ostream_iterator<PosType, char> ost(std::cout, "");
+	std::copy(poss.begin(), poss.end(), ost);
 }
 
 void MazeTest() {
-
+	Maze maze(10, 10);
+	maze.show();
 }
 

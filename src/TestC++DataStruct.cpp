@@ -11,6 +11,7 @@
 using namespace std;
 
 int main() {
-	TestADTList();
+//	TestADTList();
+	MazeTest();
 	return 0;
 }
